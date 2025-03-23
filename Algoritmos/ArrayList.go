@@ -48,8 +48,6 @@ func (l *ArrayList) Add(e int) {
 	l.inserted++
 }
 
-// 1 2 3 4 5
-
 func (l *ArrayList) AddOnIndex(e, index int) {
 	result := make([]int, l.inserted+1)
 	listaTemp1 := make([]int, index+1)
@@ -61,6 +59,7 @@ func (l *ArrayList) AddOnIndex(e, index int) {
 			listaTemp1[i] = l.Get(i)
 		}
 	}
+
 	listaTemp2 := make([]int, (l.inserted - index))
 
 	indexListaTemp2 := 0
@@ -85,14 +84,48 @@ func (l *ArrayList) AddOnIndex(e, index int) {
 	l.v = result
 }
 
+// 0 1 2 3 4
+
+func (l *ArrayList) Remove(index int) {
+	result := make([]int, l.inserted-1)
+	listaTemp1 := make([]int, index)
+
+	for i := 0; i < (l.inserted - (l.inserted - index)); i++ {
+		listaTemp1[i] = l.Get(i)
+	}
+
+	listaTemp2 := make([]int, (l.inserted - index - 1))
+
+	indexListaTemp2 := 0
+
+	for i := index + 1; i <= l.inserted-1; i++ {
+		listaTemp2[indexListaTemp2] = l.Get(i)
+		indexListaTemp2++
+	}
+
+	indexListaTemp2 = 0
+
+	for i := 0; i < l.inserted-1; i++ {
+		if i < index {
+			result[i] = listaTemp1[i]
+		} else {
+			result[i] = listaTemp2[indexListaTemp2]
+			indexListaTemp2++
+		}
+	}
+
+	l.inserted--
+	l.v = result
+}
+
 func main() {
 	l := &ArrayList{}
 	l.Init(5)
-	for i := 1; i <= 5; i++ {
+	for i := 0; i < 5; i++ {
 		l.Add(i)
 	}
 
-	l.AddOnIndex(1, 4)
+	l.Remove(4)
 
 	for i := 0; i <= l.inserted-1; i++ {
 		fmt.Println(l.Get(i))
