@@ -121,11 +121,11 @@ func (l *ArrayList) Remove(index int) {
 func main() {
 	l := &ArrayList{}
 	l.Init(5)
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 7; i++ {
 		l.Add(i)
 	}
 
-	l.Remove(4)
+	l.Remove(1)
 
 	for i := 0; i <= l.inserted-1; i++ {
 		fmt.Println(l.Get(i))
