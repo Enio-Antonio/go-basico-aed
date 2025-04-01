@@ -14,7 +14,7 @@ type LinkedList struct {
 	head     *node
 	inserted int
 }
-a
+
 type node struct {
 	val  int
 	next *node
@@ -46,10 +46,59 @@ func (l *LinkedList) Get(index int) int {
 	return aux.val
 }
 
+func (l *LinkedList) AddOnIndex(e, index int) {
+	newNode := &node{val: e, next: nil}
+
+	if index == 0 {
+		newNode.next = l.head
+		l.head = newNode
+	}
+
+	aux := l.head
+
+	for range index - 1 {
+		aux = aux.next
+	}
+
+	newNode.next = aux.next
+	aux.next = newNode
+
+	l.inserted++
+}
+
+// 0 1 2 3 4 5
+//   a   n
+
+func (l *LinkedList) Remove(index int) {
+	if index == 0 {
+		l.head = l.head.next
+		l.inserted--
+	}
+
+	aux := l.head
+
+	for range index - 1 {
+		aux = aux.next
+	}
+
+	// aux.next aponta para o 4, tem que apontar para o 5
+	noaux := aux
+	aux = aux.next // aqui ele é o quatro e aponta para o 5
+	noaux.next = aux.next
+
+	l.inserted--
+}
+
+// 0 1 2 3 4 5
+//     a n
+
 func main() {
 	ll := &LinkedList{}
 	ll.Add(1)
 	ll.Add(2)
-	valor := ll.Get(0)
-	fmt.Println(valor)
+	ll.AddOnIndex(3, 2)
+	ll.Remove(2)
+	for i := range ll.inserted {
+		fmt.Println(ll.Get(i))
+	}
 }
