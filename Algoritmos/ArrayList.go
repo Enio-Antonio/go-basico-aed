@@ -118,6 +118,12 @@ func (l *ArrayList) Remove(index int) {
 	l.v = result
 }
 
+func (l *List) Reverse() {
+    for i := range l.inserted / 2 {
+        l.v[i], l.v[l.inserted-i-1] = l.v[l.inserted-i-1], l.v[i]
+    }
+}
+
 func main() {
 	l := &ArrayList{}
 	l.Init(5)

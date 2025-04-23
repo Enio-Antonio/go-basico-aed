@@ -92,6 +92,19 @@ func (l *LinkedList) Remove(index int) {
 // 0 1 2 3 4 5
 //     a n
 
+func (l *List) Reverse() {
+    current := l.head
+    var sucessor *Node
+    var antecessor *Node
+    for range l.inserted {
+        sucessor = current.next
+        current.next = antecessor
+        antecessor = current
+        current = sucessor
+    }
+    l.head = antecessor
+}
+
 func main() {
 	ll := &LinkedList{}
 	ll.Add(1)
