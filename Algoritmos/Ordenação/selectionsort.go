@@ -29,6 +29,9 @@ func (l *LinkedList) add(e int) {
 }
 
 func (l *LinkedList) get(index int) int {
+	if l.inserted == 0 {
+		return -1
+	}
 	aux := l.head
 	for range index {
 		aux = aux.next
@@ -70,7 +73,7 @@ func selectionSort(v LinkedList) LinkedList {
 		}
 		noval.add(menor)
 		vbackup.remove(index_aux)
-		menor = 1000
+		menor = vbackup.get(0)
 	}
 
 	return noval
