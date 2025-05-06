@@ -54,7 +54,7 @@ func (l *LinkedList) remove(index int) {
 func selectionSort(v LinkedList) LinkedList {
 	var noval LinkedList
 	var index_aux int
-	menor := 1000
+	menor := v.get(0)
 	vbackup := v
 
 	for range v.inserted {
@@ -63,7 +63,7 @@ func selectionSort(v LinkedList) LinkedList {
 		}
 		fmt.Println()
 		for c := range vbackup.inserted {
-			if vbackup.get(c) < menor {
+			if vbackup.get(c) <= menor {
 				menor = vbackup.get(c)
 				index_aux = c
 			}
