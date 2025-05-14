@@ -1,10 +1,13 @@
 package main
 
-import "fmt"
+import(
+    "fmt"
+    "math"
+)
 
 func selectionSort(v []int) []int {
     newv := make([]int, len(v))
-    menor := 1000
+    menor := math.MaxInt
     aux := 0
     for i := range v {
         for c := range v {
@@ -14,7 +17,7 @@ func selectionSort(v []int) []int {
             }
         }
         newv[i] = menor
-        menor = 1000
+        menor = math.MaxInt
         v[aux] = 1000
     }
     return newv
