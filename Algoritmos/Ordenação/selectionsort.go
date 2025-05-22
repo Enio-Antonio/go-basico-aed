@@ -18,7 +18,7 @@ func selectionSort(v []int) []int {
         }
         newv[i] = menor
         menor = math.MaxInt
-        v[aux] = 1000
+        v[aux] = math.MaxInt
     }
     return newv
 }
