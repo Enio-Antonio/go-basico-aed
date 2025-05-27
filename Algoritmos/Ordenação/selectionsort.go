@@ -7,18 +7,15 @@ import(
 
 func selectionSort(v []int) []int {
     newv := make([]int, len(v))
-    menor := math.MaxInt
-    aux := 0
     for i := range v {
-        for c := range v {
-            if v[c] < menor {
-                menor = v[c]
-                aux = c
+        menor := 0
+        for c := 1; c < len(v); c++ {
+            if v[c] < v[menor] {
+                menor = c
             }
         }
-        newv[i] = menor
-        menor = math.MaxInt
-        v[aux] = math.MaxInt
+        newv[i] = v[menor]
+        v[menor] = math.MaxInt
     }
     return newv
 }
