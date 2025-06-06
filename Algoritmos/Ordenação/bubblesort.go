@@ -5,9 +5,8 @@ import "fmt"
 func bubbleSort(v []int) {
     var trocou bool
     for n := range len(v)-1 {
+        trocou = false
         for i := range len(v) - 1 - n {
-            trocou = false
-            fmt.Println(v)
             if (v[i] > v[i+1]) {
                 v[i], v[i+1] = v[i+1], v[i]
                 trocou = true
