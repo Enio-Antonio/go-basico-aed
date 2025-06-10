@@ -6,6 +6,15 @@
 // func inOrderNav()
 // func postOrderNav()
 
+// pseudocódigo para navegação
+// a fila é criada com o nó raiz
+//enquanto fila != vazia
+//	frente = fila.dequeue()
+//	print(frent.val)
+//	se frente.esq != nil {fila.enqueue(frente.esq)}
+//	se frente.dir != nil {fila.enqueue(frente.dir)}
+
+
 package main
 
 import "fmt"
@@ -70,7 +79,19 @@ func (node *BTSNode) max() int {
 	}
 }
 
-
+func (node *BSTNode) height() int {
+	hl := node.left.height()
+	hr := node.right.height()
+	return Math.Max(hl, hr)
+}
+ 
+func (node *BSTNode) preOrder() {
+	if node != nil {
+		fmt.Print(node.val, ", ")
+		node.left.preOrder()
+		node.right.preOrder()
+	}
+}
 
 func main() {
 	var bt BTSNode
