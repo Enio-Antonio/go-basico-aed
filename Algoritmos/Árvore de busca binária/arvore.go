@@ -93,6 +93,26 @@ func (node *BSTNode) preOrder() {
 	}
 }
 
+func (node *BTSNode) remove(val int) *BTSNode {
+	if node == nil {return nil}
+	if val < node.val { node.left = node.left.remove(val)}
+	else if val > nodel.val { node.right = node.right.remove(val)}
+	else { 
+		if node.left == nil && node.right == nil {
+			return nil
+		} else if node.left != nil && node.right == nil {
+			return node.left 
+		} else if node.left == nil && node.right != nil {
+			return node.right
+		} else {	
+			max := node.left.max()
+			node.val = max
+			node.left = node.left.remove(max)
+		}
+		return node
+	}
+}
+
 func main() {
 	var bt BTSNode
 	bt.add(1)
