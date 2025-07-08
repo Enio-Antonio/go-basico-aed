@@ -14,6 +14,17 @@ func insertionSort(v []int) {
 	}
 }
 
+//func insertionSortS(v []int) {
+//    for i := 1; i < len(v); i++ {
+//        c := i
+//        for ; c > 0 && v[c-1] > v[c]; c-- {
+//            v[c], v[c-1] = v[c-1], v[c]
+//            fmt.Println(v)
+//        }
+//    }
+//}
+
+
 func main() {
 	v := []int{4, 3, 2, 1, 4, 2}
 	insertionSort(v)

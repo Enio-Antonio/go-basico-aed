@@ -46,21 +46,37 @@ func (bs *BinaryTree) add(e int) {
 	}
 }
 
-func (bs *BinaryTree) printMin() {
+func (bs *BinaryTree) min() int {
 	aux := bs.root
+	var p *BSNode
 	for aux != nil {
-		fmt.Println(aux.val)
+		p = aux
+		//fmt.Println(aux.val)
 		aux = aux.esq
 	}
+	return p.val
 }
 
-func (bs *BinaryTree) search(e int) bool {
-	
+func (bs *BinaryTree) max() int {
+	aux := bs.root
+	var p *BSNode
+	for aux != nil {
+		p = aux
+		aux = aux.dir
+	}
+	return p.val
 }
+
+//func (bs *BinaryTree) search(e int) bool {
 
 func main() {
 	var bs BinaryTree
 	bs.add(5)
 	bs.add(4)
+	bs.add(1)
+	a := bs.min()
+	m := bs.max()
+	fmt.Println(a)
+	fmt.Println(m)
 	fmt.Println("Acabou")
 }
